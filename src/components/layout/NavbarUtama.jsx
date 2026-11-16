@@ -32,26 +32,16 @@ export const NavbarUtama = () => {
     <header className="sticky top-0 z-40 bg-permukaan/90 backdrop-blur-md border-b border-garis transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo & Identitas */}
+          {/* Logo Resmi Kos Putri Alhamra */}
           <Link
             to="/"
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-kuning-mas rounded-lg"
+            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-kuning-mas rounded-lg"
           >
-            <div className="w-12 h-12 rounded-xl bg-latar p-1 flex items-center justify-center border border-garis shadow-sm group-hover:scale-105 transition-transform overflow-hidden">
-              <img
-                src={logoAlhamra}
-                alt="Logo Resmi Kos Putri Alhamra"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-lg text-marun tracking-tight leading-none">
-                Kos Putri Alhamra
-              </span>
-              <span className="text-xs text-terakota font-medium tracking-wide mt-1">
-                Hunian Mahasiswi Pekanbaru
-              </span>
-            </div>
+            <img
+              src={logoAlhamra}
+              alt="Kos Putri Alhamra"
+              className="h-16 w-auto max-h-[72px] object-contain group-hover:scale-105 transition-transform"
+            />
           </Link>
 
           {/* Navigasi Desktop */}

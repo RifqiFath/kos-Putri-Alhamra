@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MapPin, Phone, ShieldCheck, Heart } from 'lucide-react';
 import logoAlhamra from '../../assets/logos/logo-alhamra.svg';
 
@@ -9,18 +10,13 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-permukaan/10">
           {/* Kolom 1: Profil Kos */}
           <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-sm overflow-hidden">
-                <img
-                  src={logoAlhamra}
-                  alt="Logo Kos Putri Alhamra"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <span className="font-bold text-xl text-kuning-mas tracking-tight">
-                Kos Putri Alhamra
-              </span>
-            </div>
+            <Link to="/" className="inline-block">
+              <img
+                src={logoAlhamra}
+                alt="Kos Putri Alhamra"
+                className="h-14 w-auto object-contain brightness-0 invert"
+              />
+            </Link>
             <p className="text-permukaan/80 text-sm leading-relaxed max-w-md">
               Rumah kos putri minimalis, unik, bersih, dan nyaman. Menawarkan suasana tenang dan kondusif untuk mahasiswi yang menempuh pendidikan di Pekanbaru.
             </p>
