@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
+import WidgetChatbot from '../components/common/WidgetChatbot';
 
 export const DashboardLayout = () => {
   const { pengguna, logout } = useAuth();
@@ -205,6 +206,7 @@ export const DashboardLayout = () => {
           <Outlet />
         </div>
       </main>
+      <WidgetChatbot />
     </div>
   );
 };

@@ -11,17 +11,17 @@ export const TombolWhatsAppMelayang = () => {
   return (
     <aside
       aria-label="Kontak Cepat WhatsApp"
-      className="fixed bottom-6 right-6 z-40 group"
+      className="fixed bottom-20 right-6 sm:bottom-6 sm:right-52 z-30 group"
     >
       <a
         href={tautanWhatsApp}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white px-4 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 border-2 border-white focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
+        className="flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white px-3.5 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 border-2 border-white focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
       >
-        <MessageCircle className="w-6 h-6 fill-white" />
-        <span className="font-semibold text-sm hidden sm:inline-block">
-          Tanya Kamar
+        <MessageCircle className="w-5 h-5 fill-white" />
+        <span className="font-semibold text-xs sm:text-sm hidden sm:inline-block">
+          WhatsApp Pak Yusuf
         </span>
       </a>
       <span className="sr-only">Hubungi Pengelola via WhatsApp di +62 813-7195-8826</span>

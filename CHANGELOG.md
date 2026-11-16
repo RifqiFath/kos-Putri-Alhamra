@@ -4,6 +4,31 @@ Semua perubahan penting pada proyek **Kos Putri Alhamra** didokumentasikan dalam
 
 ---
 
+## [v0.4.0] - 2026-11-16
+### Ditambahkan
+- **Widget Chatbot Asisten Virtual AI RAG (`WidgetChatbot.jsx`):**
+  - Komponen pemicu tombol mengambang (*floating action button*) di sudut kanan bawah yang berdampingan serasi dengan tombol WhatsApp pengelola.
+  - Jendela percakapan interaktif (*chat window*) bergaya *Soft Bento* responsif dengan header avatar asisten Alhamra, status online aktif, tombol atur ulang percakapan, dan tombol tutup.
+  - Gelembung pesan yang membedakan pesan pengguna (*user*) dan asisten Alhamra (*bot*).
+  - Animasi mengetik berdenyut (*typing indicator*) dengan simulasi waktu tunggu inferensi AI RAG (400–700 ms).
+  - Komponen chip pertanyaan cepat (*Quick FAQ Pills*) untuk jawaban populer satu sentuhan (Harga Sewa, Jam Malam, Fasilitas, Aturan Tamu, Jadwal Survei, Lapor Kerusakan).
+  - Tautan aksi pengarahan (*Action Redirect Links*) di dalam balon respon bot (menuju halaman lapor kerusakan, kuitansi tagihan sewa, Google Maps lokasi kos, atau WhatsApp pengelola).
+- **Modul Layanan Chatbot & Intent Router Mock (`services/chatService.js`):**
+  - Implementasi fungsi `ambilPertanyaanCepat`, `klasifikasiIntent`, dan `prosesPesanChatbot`.
+  - Mesin klasifikasi intent semantik berbasis pencocokan kata kunci dan bobot relevansi bersumber dari `data landing page kos putri alhamra.md`.
+  - Dukungan intent: `info_harga`, `aturan_jam_malam`, `info_fasilitas`, `aturan_tamu`, `lokasi_kampus`, `lapor_kerusakan`, `cek_tagihan`, `jadwal_survei`, `larangan_kos`, `hubungi_pemilik`, dan `di_luar_konteks` (fallback ramah WhatsApp Pak Yusuf).
+- **Polesan Konsistensi Desain Tiga Dasbor Peran (*Soft Bento Refinement*):**
+  - **Dasbor Penghuni (`DasborPenghuni.jsx`):** Kartu bento informasi unit hunian (nomor kamar, tipe kamar, lantai, fasilitas kamar mandi dalam, status air & wifi gratis), ringkasan status tagihan sewa bulanan, lencana hitung mundur jatuh tempo tanggal 1, aturan jam malam (22.00 / 22.30 WIB), serta pelacakan tiket perbaikan.
+  - **Dasbor Penjaga (`DasborPenjaga.jsx`):** 4 kartu metrik antrean tiket perbaikan (menunggu, diproses, selesai, kritis), modul **Log Kontrol Kebersihan & Fasilitas Bersama Harian** (dapur bersama, area jemuran, parkiran motor beratap, ruang TV & gembok pagar) dengan tombol toggle status periksa, serta daftar antrean tiket pengerjaan.
+  - **Dasbor Pemilik (`DasborPemilik.jsx`):** Metrik ringkas keuangan arus kas, banner peringatan verifikasi struk transfer tertunda, modul visualisasi **Denah Okupansi 20 Kamar Kos Putri Alhamra** (16 kamar sendiri, 4 kamar berdua; 19 terisi hijau emerald, 1 tersedia kuning-mas siap huni), dan pintasan modul manajemen.
+- **Data Uji Eksternal & Suite Pengujian Otomatis:**
+  - Berkas `src/data/test_data_chatbot.json` berisi basis pengetahuan FAQ komprehensif dan intent semantik.
+  - Skrip pengujian unit dan logika chatbot `src/tests/uji_modul_chat.js` yang terintegrasi ke perintah `npm test` (12/12 pengujian intent & async lolos 100%).
+  - Skrip otomatisasi tangkapan layar peramban `src/tests/ambil_tangkapan_layar_tahap04.js`.
+  - Berkas tangkapan layar PNG resmi yang tersimpan di `docs/tangkapan_layar/tahap_04/`.
+
+---
+
 ## [v0.3.0] - 2026-11-16
 ### Ditambahkan
 - **Modul Pembayaran & Status Tagihan Penghuni (`RiwayatTagihan.jsx`):**

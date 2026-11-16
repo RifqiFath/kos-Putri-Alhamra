@@ -1,0 +1,237 @@
+{
+  "pertanyaan_cepat": [
+    {
+      "id": "q1",
+      "pertanyaan": "Berapa harga sewa per bulan?",
+      "label": "Harga Sewa"
+    },
+    {
+      "id": "q2",
+      "pertanyaan": "Bagaimana aturan jam malam di kos?",
+      "label": "Jam Malam"
+    },
+    {
+      "id": "q3",
+      "pertanyaan": "Apa saja fasilitas yang disediakan?",
+      "label": "Fasilitas Kos"
+    },
+    {
+      "id": "q4",
+      "pertanyaan": "Bolehkah teman atau keluarga menginap?",
+      "label": "Aturan Tamu"
+    },
+    {
+      "id": "q5",
+      "pertanyaan": "Bagaimana cara survei kamar langsung?",
+      "label": "Jadwal Survei"
+    },
+    {
+      "id": "q6",
+      "pertanyaan": "Saya ingin lapor kerusakan fasilitas di kamar",
+      "label": "Lapor Kerusakan"
+    }
+  ],
+  "basis_pengetahuan_intent": [
+    {
+      "intent": "info_harga",
+      "kata_kunci": [
+        "harga",
+        "biaya",
+        "sewa",
+        "tarif",
+        "bayar berapa",
+        "tipe kamar",
+        "sendiri",
+        "berdua",
+        "bulanan",
+        "listrik",
+        "token",
+        "air"
+      ],
+      "jawaban": "Kos Putri Alhamra menyediakan 2 pilihan tipe kamar sewa bulanan:\n• Tipe Sendiri: Rp700.000 / bulan (16 kamar, kamar mandi dalam)\n• Tipe Berdua: Rp900.000 / bulan (4 kamar, kamar mandi dalam)\n\nBiaya sudah termasuk pemakaian air. Untuk listrik menggunakan meteran token mandiri yang dibeli sesuai kebutuhan kamu.",
+      "tautan_aksi": {
+        "tipe": "internal",
+        "label": "Lihat Pilihan Kamar",
+        "url": "/#kamar"
+      }
+    },
+    {
+      "intent": "aturan_jam_malam",
+      "kata_kunci": [
+        "jam malam",
+        "kunci",
+        "pulang malam",
+        "tutup gerbang",
+        "pagar",
+        "pintu dikunci",
+        "keamanan",
+        "gembok"
+      ],
+      "jawaban": "Demi keamanan dan kenyamanan mahasiswi, jam malam berlaku sebagai berikut:\n• Hari biasa (Senin-Jumat & Minggu): Pintu dan pagar dikunci pukul 22.00 WIB.\n• Malam Minggu (Sabtu): Pintu dan pagar dikunci pukul 22.30 WIB.\n\nSetiap penghuni memegang kunci kamar masing-masing. Keamanan kos dijaga dengan CCTV 24 jam dan penjaga yang siaga.",
+      "tautan_aksi": null
+    },
+    {
+      "intent": "info_fasilitas",
+      "kata_kunci": [
+        "fasilitas",
+        "wifi",
+        "kasur",
+        "lemari",
+        "kamar mandi",
+        "dapur",
+        "parkir",
+        "cctv",
+        "perabotan",
+        "furnished"
+      ],
+      "jawaban": "Fasilitas lengkap di Kos Putri Alhamra:\n• Fasilitas Kamar: Full furnished (kasur nyaman, bantal, lemari pakaian), lantai granit bersih, dan kamar mandi dalam.\n• Fasilitas Bersama: Dapur bersama, ruang TV komunal, ruang tamu, free WiFi cepat, dan parkiran motor beratap gratis (kapasitas ~10 motor).\n• Keamanan: Pantauan CCTV 24 jam dan penjaga kos.",
+      "tautan_aksi": {
+        "tipe": "internal",
+        "label": "Jelajahi Fasilitas",
+        "url": "/#fasilitas"
+      }
+    },
+    {
+      "intent": "aturan_tamu",
+      "kata_kunci": [
+        "tamu",
+        "teman",
+        "orang tua",
+        "keluarga",
+        "menginap",
+        "kunjungan",
+        "bawa teman",
+        "nginap"
+      ],
+      "jawaban": "Aturan kunjungan dan tamu menginap:\n• Kunjungan: Tamu wanita atau keluarga boleh berkunjung di area ruang tamu.\n• Tamu Menginap: Diberikan jatah maksimal 2 kali dalam sebulan tanpa biaya tambahan.\n  - Tamu keluarga (ibu/saudari kandung): maksimal 1 minggu.\n  - Teman putri: maksimal 2 hari.\nDemi kenyamanan bersama, mohon memberitahukan penjaga kos terlebih dahulu.",
+      "tautan_aksi": null
+    },
+    {
+      "intent": "lokasi_kampus",
+      "kata_kunci": [
+        "lokasi",
+        "alamat",
+        "kampus",
+        "dekat unri",
+        "unri",
+        "stifar",
+        "uin",
+        "panam",
+        "maps",
+        "buraq"
+      ],
+      "jawaban": "Kos Putri Alhamra beralamat di Jl. Buraq, Simpang Baru, Kec. Binawidya (kawasan Panam), Kota Pekanbaru, Riau 28292.\n\nSangat strategis dekat berbagai kampus:\n• Kampus UNRI (Universitas Riau)\n• STIFAR Riau\n• UIN Sultan Syarif Kasim (Suska) Riau\nDekat juga dengan pusat perbelanjaan, rumah sakit, dan warung makan.",
+      "tautan_aksi": {
+        "tipe": "eksternal",
+        "label": "Buka Google Maps",
+        "url": "https://maps.app.goo.gl/PycGPbLDyoL2gSMo7"
+      }
+    },
+    {
+      "intent": "lapor_kerusakan",
+      "kata_kunci": [
+        "lapor",
+        "rusak",
+        "kerusakan",
+        "lampu mati",
+        "keran bocor",
+        "air mati",
+        "pipa",
+        "genteng",
+        "plumbing",
+        "keluhan",
+        "komplain",
+        "perbaikan"
+      ],
+      "jawaban": "Jika ada fasilitas kamar atau area bersama yang rusak (seperti keran bocor, lampu padam, atau saluran air mampet), kamu dapat membuat tiket pelaporan online. Sistem AI kami akan otomatis memprioritaskan perbaikan agar penjaga segera menanganinya.",
+      "tautan_aksi": {
+        "tipe": "internal",
+        "label": "Buka Formulir Lapor Kerusakan",
+        "url": "/penghuni/lapor-kerusakan"
+      }
+    },
+    {
+      "intent": "cek_tagihan",
+      "kata_kunci": [
+        "tagihan",
+        "kuitansi",
+        "pembayaran",
+        "struk",
+        "transfer",
+        "jatuh tempo",
+        "rekening",
+        "bukti bayar",
+        "lunas"
+      ],
+      "jawaban": "Pembayaran sewa kos jatuh tempo setiap tanggal 1 setiap bulannya. Untuk penghuni aktif, kamu bisa mengecek status tagihan bulanan, mengunggah bukti transfer struk bank, dan mengunduh kuitansi digital resmi berstempel Kos Putri Alhamra melalui dasbor penghuni.",
+      "tautan_aksi": {
+        "tipe": "internal",
+        "label": "Buka Menu Tagihan & Kuitansi",
+        "url": "/penghuni/tagihan"
+      }
+    },
+    {
+      "intent": "jadwal_survei",
+      "kata_kunci": [
+        "survei",
+        "lihat kamar",
+        "datang langsung",
+        "booking",
+        "pesan",
+        "cara sewa",
+        "daftar kos",
+        "ketersediaan"
+      ],
+      "jawaban": "Untuk menjadwalkan survei kamar langsung atau pemesanan:\n1. Hubungi Pak Yusuf (pengelola) via WhatsApp untuk membuat janji temu atau ketersediaan kamar terbaru.\n2. Datang ke Jl. Buraq, penjaga kos kami siap mengantar kamu melihat unit kamar secara langsung.\n3. Jika cocok, kamu bisa langsung menyelesaikan administrasi sewa.",
+      "tautan_aksi": {
+        "tipe": "whatsapp",
+        "label": "Chat WhatsApp Pak Yusuf",
+        "url": "https://wa.me/6281371958826?text=Halo%20Pak%20Yusuf,%20saya%20ingin%20jadwalkan%20survei%20kamar%20Kos%20Putri%20Alhamra"
+      }
+    },
+    {
+      "intent": "larangan_kos",
+      "kata_kunci": [
+        "larangan",
+        "boleh merokok",
+        "hewan",
+        "kucing",
+        "anjing",
+        "pet",
+        "rokok",
+        "vape",
+        "peraturan"
+      ],
+      "jawaban": "Untuk menjaga kebersihan, ketenangan, dan kenyamanan seluruh mahasiswi:\n• Dilarang keras membawa hewan peliharaan apa pun (kucing, anjing, dsb).\n• Dilarang merokok atau vape di seluruh area kos dan kamar.\n• Kebersihan area komunal (dapur dan jemuran) dirawat bersama.",
+      "tautan_aksi": null
+    },
+    {
+      "intent": "hubungi_pemilik",
+      "kata_kunci": [
+        "hubungi",
+        "kontak",
+        "whatsapp",
+        "telepon",
+        "nomor hp",
+        "pengelola",
+        "pak yusuf",
+        "admin",
+        "owner"
+      ],
+      "jawaban": "Kamu dapat langsung menghubungi pengelola resmi Kos Putri Alhamra:\n• Pengelola: Pak Yusuf\n• WhatsApp / Telp: +62 813-7195-8826\n• Lokasi: Jl. Buraq, Simpang Baru, Binawidya, Pekanbaru",
+      "tautan_aksi": {
+        "tipe": "whatsapp",
+        "label": "Chat WhatsApp Sekarang",
+        "url": "https://wa.me/6281371958826"
+      }
+    }
+  ],
+  "pesan_fallback": {
+    "teks": "Maaf, aku belum memiliki informasi spesifik mengenai hal tersebut. Agar kamu mendapatkan jawaban yang lebih pasti, kamu bisa langsung menghubungi Pak Yusuf selaku pengelola Kos Putri Alhamra via WhatsApp ya!",
+    "tautan_aksi": {
+      "tipe": "whatsapp",
+      "label": "Tanya Pak Yusuf via WhatsApp",
+      "url": "https://wa.me/6281371958826?text=Halo%20Pak%20Yusuf,%20saya%20ingin%20bertanya%20mengenai%20Kos%20Putri%20Alhamra"
+    }
+  }
+}
