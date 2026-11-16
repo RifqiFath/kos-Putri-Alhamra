@@ -4,34 +4,52 @@ Semua perubahan penting pada proyek **Kos Putri Alhamra** didokumentasikan dalam
 
 ---
 
+## [v0.3.0] - 2026-11-16
+### Ditambahkan
+- **Modul Pembayaran & Status Tagihan Penghuni (`RiwayatTagihan.jsx`):**
+  - Tampilan status tagihan bulanan transparan (`BELUM BAYAR`, `MENUNGGU VERIFIKASI`, `LUNAS`, `DITOLAK`).
+  - Formulir unggah foto struk transfer bank / screenshot QRIS dengan pratinjau instan (*preview*) dan validasi berkas (maksimal 5 MB, format gambar JPG/PNG/WEBP).
+  - Informasi rekening bank resmi pengelola (BCA & Bank Riau Kepri Syariah a.n. Bapak Yusuf) dengan fitur salin nomor rekening instan.
+  - **Kuitansi Digital Pelunasan Sewa:** Pratinjau modal kuitansi digital resmi ketika status sewa telah lunas disertai fitur cetak/print.
+  - Kotak peringatan interaktif jika bukti transfer ditolak pemilik kos lengkap dengan alasan penolakan.
+  - Riwayat lengkap tagihan sewa bulanan.
+- **Modul Verifikasi Pembayaran Pemilik (`VerifikasiPembayaran.jsx`):**
+  - Tabel peninjauan bukti transfer dengan pratinjau foto struk (*zoom modal*).
+  - Aksi **Setujui Pembayaran** yang secara otomatis mengubah status tagihan menjadi `LUNAS` dan merekonsiliasi kas masuk ke buku mutasi kas.
+  - Aksi **Tolak Pembayaran** disertai modal dialog input alasan penolakan ramah pengguna.
+  - Tab penyaring status (*Menunggu Verifikasi, Semua Tagihan, Lunas, Ditolak*) dan pencarian data penghuni.
+- **Manajemen Keuangan & Arus Kas (`ManajemenKeuangan.jsx`):**
+  - Empat kartu metrik bento: Total Pemasukan Kas, Total Pengeluaran, Saldo Bersih (*Net Income*), dan Jumlah Kamar Menunggak.
+  - Formulir modal pencatatan pengeluaran operasional harian (listrik & air PDAM, gaji staf, perbaikan fasilitas, lain-lain).
+  - Buku mutasi kas (ledger transaksi) dengan filter jenis kas (*Semua, Pemasukan, Pengeluaran*), filter kategori, dan pencarian teks.
+- **Sistem Pengingat Jatuh Tempo Otomatis (*Due Date Countdown*):**
+  - Komputasi dinamis status waktu tagihan sewa (jatuh tempo tanggal 1 bulanan) dengan lencana indikator status: "Terlambat X Hari", "Jatuh Tempo Hari Ini", dan "X Hari Menuju Tempo".
+  - Banner peringatan dinamis di dasbor pemilik jika terdapat pembayaran yang menunggu verifikasi.
+- **Layanan Penyimpanan & Mock Keuangan (`services/keuanganService.js`):**
+  - Fungsi `ambilDaftarTagihan`, `ambilTagihanBerdasarkanId`, `unggahBuktiPembayaran`, `verifikasiPembayaran`, `catatPengeluaranOperasional`, `ambilSemuaTransaksi`, `ambilRingkasanLabaRugi`, dan `resetDataKeuanganKeAwal`.
+- **Data Uji Eksternal & Suite Pengujian Otomatis:**
+  - Berkas `src/data/test_data_keuangan.json` berisi data tagihan sewa bulanan dan mutasi arus kas operasional.
+  - Skrip pengujian unit dan logika keuangan `src/tests/uji_modul_keuangan.js` yang terintegrasi ke perintah `npm test` (4/4 pengujian kalkulasi & rekonsiliasi kas lolos 100%).
+  - Skrip otomatisasi tangkapan layar peramban `src/tests/ambil_tangkapan_layar_tahap03.js`.
+  - Berkas tangkapan layar PNG resmi yang tersimpan di `docs/tangkapan_layar/tahap_03/`.
+
+---
+
 ## [v0.2.0] - 2026-11-16
 ### Ditambahkan
 - **Modul Pelaporan Kerusakan Fasilitas (`FormLaporKerusakan.jsx`):**
-  - Pemilihan lokasi fasilitas (Kamar Mandi Dalam, Kamar Tidur, Dapur Bersama, Area Parkir, dll.).
-  - Input judul ringkas dan deskripsi bebas kendala kerusakan.
-  - Komponen unggah foto kondisi awal (*before*) dengan fitur pratinjau gambar (*preview*) instan dan validasi berkas (maksimal 5 MB, format gambar JPG/PNG/WEBP).
+  - Pemilihan lokasi fasilitas, judul, dan deskripsi bebas kendala kerusakan.
+  - Unggah foto kondisi awal (*before*) dengan fitur pratinjau gambar (*preview*) instan dan validasi berkas (maksimal 5 MB, format gambar JPG/PNG/WEBP).
   - Integrasi simulasi klasifikasi AI *real-time* berbasis NLP yang otomatis mendeteksi kategori fasilitas (`plumbing`, `listrik`, `furnitur`, `kebersihan`), menentukan tingkat urgensi (`rendah`, `sedang`, `tinggi`), menghitung skor urgensi, dan memberikan penjelasan alasan pertimbangan keselamatan.
-  - Tombol pintasan **Uji Cepat Klasifikasi AI** (Kasus Stopkontak Berasap, Pipa Wastafel Bocor, Engsel Lemari Kendor) untuk memudahkan penilai dan pengembang mencoba skenario AI instan tanpa mengetik manual.
-  - Validasi formulir menggunakan notifikasi mengambang `ToastNotification`.
+  - Tombol pintasan **Uji Cepat Klasifikasi AI** (Kasus Stopkontak Berasap, Pipa Wastafel Bocor, Engsel Lemari Kendor).
 - **Layanan Penyimpanan & Simulasi AI (`services/kerusakanService.js`):**
   - Implementasi fungsi `ambilSemuaTiket`, `ambilTiketBerdasarkanId`, `buatTiketBaru`, `perbaruiStatusTiket`, dan `resetDataTiketKeAwal`.
-  - Simulasi pemanggilan API asinkron dengan penyimpanan persisten di penyimpanan lokal peramban.
-  - Implementasi fungsi inferensi `klasifikasiKerusakanAI` dengan pembobotan semantik kata kunci multi-kategori dan analisis risiko darurat.
 - **Modul Pemantauan & Riwayat Tiket Perbaikan (`DaftarTiketKerusakan.jsx`):**
   - Kartu bento informasi tiket lengkap dengan lencana status (`MENUNGGU`, `DIPROSES`, `SELESAI`), lencana kategori AI, lencana urgensi, galeri foto before-after, serta catatan teknisi.
-  - Fitur interaktif perbesaran foto (*modal zoom preview*).
-  - Tab penyaring status dinamis, filter kategori AI, filter tingkat urgensi, serta pencarian kata kunci teks.
-  - **Aksi Penjaga Kos (Staff):** Modal interaktif pembaruan penanganan tiket untuk mengubah status, mengunggah foto hasil pekerjaan (*after*), mencatat tindakan teknisi, dan mengisi biaya realisasi perbaikan.
-  - Integrasi komponen `SkeletonLoader` saat data tiket sedang dimuat.
+  - Modal interaktif bagi Penjaga Kos (`staff`) untuk memperbarui status pengerjaan, mengunggah foto hasil pekerjaan (*after*), mencatat tindakan teknisi, dan mengisi biaya realisasi perbaikan.
 - **Data Uji Eksternal & Suite Pengujian Otomatis:**
   - Berkas `src/data/test_data_kerusakan.json` berisi 5 variasi sampel tiket kerusakan realistis.
-  - Skrip pengujian unit dan logika inferensi AI `src/tests/uji_modul_kerusakan.js` yang terhubung ke perintah `npm test`.
-  - Skrip otomatisasi tangkapan layar antarmuka `src/tests/ambil_tangkapan_layar.js`.
-  - 7 berkas tangkapan layar PNG resmi yang tersimpan di `docs/tangkapan_layar/tahap_02/`.
-- **Pembaruan Navigasi & Dasbor:**
-  - Integrasi pelacak tiket aktif pada dasbor penghuni (`DasborPenghuni.jsx`).
-  - Integrasi metrik dinamis dan manajemen antrean tiket pada dasbor penjaga (`DasborPenjaga.jsx`).
-  - Pembaruan rute dan menu sidebar dasbor staf untuk akses cepat pencatatan kerusakan baru.
+  - Skrip pengujian unit dan logika inferensi AI `src/tests/uji_modul_kerusakan.js`.
 
 ---
 
@@ -66,9 +84,5 @@ Semua perubahan penting pada proyek **Kos Putri Alhamra** didokumentasikan dalam
   - Komponen `TombolWhatsAppMelayang.jsx` di pojok kanan bawah.
 - **Kerangka Shell Dasbor Peran (RBAC):**
   - Penyediaan tata letak ber-sidebar `DashboardLayout.jsx`.
-  - Kerangka shell dasbor Penghuni (`DasborPenghuni.jsx`, `FormLaporKerusakan.jsx`, `RiwayatTagihan.jsx`).
-  - Kerangka shell dasbor Penjaga (`DasborPenjaga.jsx`, `DaftarPerbaikanFasilitas.jsx`).
-  - Kerangka shell dasbor Pemilik (`DasborPemilik.jsx`, `ManajemenKeuangan.jsx`, `VerifikasiPembayaran.jsx`, `AnalitikPrediksiChurn.jsx`).
 - **Dokumentasi Proyek:**
   - Penulisan panduan instalasi dan penggunaan pada `README.md`.
-  - Penyediaan folder tangkapan layar di `docs/tangkapan_layar/tahap_01/`.

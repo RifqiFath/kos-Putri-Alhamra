@@ -13,33 +13,50 @@ Website terintegrasi untuk pengelolaan operasional, pelaporan kerusakan fasilita
 
 ## 2. Fitur yang Telah Diimplementasikan
 
-### Tahap 1 (Rilis v0.1.0)
+### Tahap 1 (Rilis v0.1.0 — Inisialisasi, Desain & Auth)
 - **Landing Page Publik Soft Bento:** Hero section, katalog kamar (Rp700.000 & Rp900.000), fasilitas, keamanan CCTV 24 jam, galeri dokumentasi, peta lokasi Google Maps, peraturan kos, alur pemesanan WhatsApp, testimoni, FAQ interaktif, dan Floating WhatsApp Button (+6281371958826).
 - **Token Desain & Warna Tailwind:** Palet warna kos (`marun`, `kuning-mas`, `terakota`, `cokelat-tua`, `latar`, `permukaan`, `garis`) dan font Plus Jakarta Sans.
 - **Autentikasi & RBAC Guard:** `AuthContext` dengan **Quick Login** 3 peran (`owner`, `staff`, `tenant`) serta `ProtectedRoute`.
 - **Komponen Umpan Balik:** `SkeletonLoader` berdenyut (*pulse*) dan `ToastNotification` sudut kanan atas.
 
-### Tahap 2 (Rilis v0.2.0 — Modul Pelaporan Kerusakan & Integrasi Klasifikasi AI)
+### Tahap 2 (Rilis v0.2.0 — Modul Pelaporan Kerusakan & Klasifikasi AI)
 - **Formulir Pelaporan Kerusakan (`FormLaporKerusakan.jsx`):**
-  - Pemilihan lokasi fasilitas (Kamar Mandi Dalam, Kamar Tidur, Dapur Bersama, dll.).
-  - Input judul dan deskripsi masalah secara bebas.
-  - **Unggah Foto Kondisi Awal (Before)** dengan pratinjau (*preview*) gambar langsung dan validasi ukuran (maksimal 5 MB, format gambar JPG/PNG/WEBP).
-  - **Klasifikasi AI Otomatis (NLP Simulation):** Menganalisis teks laporan secara *real-time* untuk memprediksi kategori (`plumbing`, `listrik`, `furnitur`, `kebersihan`), tingkat urgensi (`rendah`, `sedang`, `tinggi`), skor urgensi (0.00 - 1.00), dan alasan pertimbangan keselamatan.
-  - **Tombol Kasus Uji Cepat:** Tiga tombol sampel kasus ("🔥 Stopkontak Berasap", "💧 Pipa Wastafel Bocor", "🪑 Engsel Lemari Longgar") untuk memudahkan evaluasi instan oleh penguji/dosen.
-- **Pemantauan & Manajemen Tiket Perbaikan (`DaftarTiketKerusakan.jsx`):**
+  - Pemilihan lokasi fasilitas, judul, dan deskripsi bebas kendala kerusakan.
+  - Unggah foto kondisi awal (*before*) dengan pratinjau gambar dan validasi ukuran (maks 5 MB).
+  - Klasifikasi AI otomatis (*NLP Simulation*) mendeteksi kategori (`plumbing`, `listrik`, `furnitur`, `kebersihan`), urgensi (`rendah`, `sedang`, `tinggi`), skor probabilitas, dan rekomendasi keselamatan.
+  - Tombol uji cepat data sampel kasus AI.
+- **Daftar & Manajemen Tiket Perbaikan (`DaftarTiketKerusakan.jsx`):**
   - Pelacakan status perbaikan: `MENUNGGU` (amber), `DIPROSES` (biru), dan `SELESAI` (hijau).
-  - **Akses Penjaga (Staff):** Memperbarui status pengerjaan tiket, mengunggah foto hasil perbaikan (*after*), menambahkan catatan teknisi, dan mencatat biaya realisasi perbaikan.
-  - **Akses Penghuni (Tenant):** Memantau perkembangan perbaikan secara transparan (*real-time status tracker*).
-  - Filter pencarian kata kunci, tab status, filter kategori AI, filter urgensi, serta tombol *Reset Data Sampel*.
-- **Data Uji Eksternal:** `src/data/test_data_kerusakan.json` berisi 5 variasi tiket realistis untuk menguji seluruh skenario alur kerja.
+  - Modal aksi penjaga kos: perbarui status, unggah foto perbaikan (*after*), catatan teknisi, dan biaya realisasi.
+  - Filter multi-kriteria dan pencarian teks.
+
+### Tahap 3 (Rilis v0.3.0 — Pencatatan Keuangan, Pembayaran Sewa & Verifikasi Kuitansi)
+- **Modul Pembayaran & Status Tagihan Penghuni (`RiwayatTagihan.jsx`):**
+  - Status tagihan bulanan: `BELUM BAYAR`, `MENUNGGU VERIFIKASI`, `LUNAS`, dan `DITOLAK`.
+  - Formulir unggah bukti transfer sewa (JPG/PNG, pratinjau instan, batas 5 MB).
+  - Informasi rekening resmi pengelola (BCA & Bank Riau Kepri Syariah a.n. Bapak Yusuf) dengan fitur salin nomor rekening satu klik.
+  - **Kuitansi Pembayaran Digital:** Pratinjau kuitansi digital resmi saat sewa berstatus lunas dengan fitur cetak/unduh.
+  - Pemberitahuan interaktif jika pembayaran ditolak disertai catatan alasan dari pemilik.
+- **Modul Verifikasi Pembayaran Pemilik (`VerifikasiPembayaran.jsx`):**
+  - Tabel peninjauan bukti transfer dengan pratinjau foto struk (*zoom modal*).
+  - Tombol aksi cepat **Setujui Pembayaran** (otomatis mengubah status jadi `LUNAS` dan merekonsiliasi kas masuk).
+  - Tombol aksi **Tolak Pembayaran** (disertai modal input alasan penolakan).
+- **Manajemen Arus Kas & Pengeluaran Operasional (`ManajemenKeuangan.jsx`):**
+  - Kartu metrik bento: Total Pemasukan, Total Pengeluaran, Saldo Bersih (*Net Income*), dan Kamar Menunggak.
+  - Formulir pencatatan pengeluaran operasional (listrik & air PDAM, gaji staf, perbaikan fasilitas, lain-lain).
+  - Buku mutasi kas (ledger transaksi) dengan filter jenis kas, filter kategori, dan pencarian.
+- **Sistem Pengingat Jatuh Tempo Otomatis (*Due Date Countdown*):**
+  - Menghitung hari menuju jatuh tempo tanggal 1 bulanan ("Terlambat X Hari", "Jatuh Tempo Hari Ini", "X Hari Menuju Tempo").
+  - Lencana pengingat aktif di dasbor penghuni dan banner peringatan verifikasi tertunda di dasbor pemilik.
+- **Data Uji Eksternal:** `src/data/test_data_keuangan.json` berisi data tagihan sewa bulanan dan mutasi arus kas operasional.
 
 ---
 
 ## 3. Akun Demo untuk Pengujian Cepat (*Quick Login*)
 Tersedia tombol satu klik di halaman `/login` dengan kredensial bawaan:
-- **Pemilik (Owner):** `pemilik@alhamra.id` &rarr; Akses rute `/pemilik`
+- **Pemilik (Owner):** `pemilik@alhamra.id` &rarr; Akses rute `/pemilik`, `/pemilik/keuangan`, dan `/pemilik/verifikasi`
 - **Penjaga (Staff):** `penjaga@alhamra.id` &rarr; Akses rute `/penjaga` dan `/penjaga/perbaikan`
-- **Penghuni (Tenant):** `penghuni@alhamra.id` &rarr; Akses rute `/penghuni` dan `/penghuni/lapor-kerusakan`
+- **Penghuni (Tenant):** `penghuni@alhamra.id` &rarr; Akses rute `/penghuni`, `/penghuni/tagihan`, dan `/penghuni/lapor-kerusakan`
 
 ---
 
@@ -59,9 +76,9 @@ npm run dev
 ```
 Buka peramban pada alamat: `http://localhost:5173`
 
-### Langkah Menjalankan Pengujian Unit & Logika AI
+### Langkah Menjalankan Pengujian Unit & Logika
 ```bash
-# Menjalankan validasi skema data uji & inferensi klasifikasi AI
+# Menjalankan validasi skema data uji, AI klasifikasi, dan kalkulasi keuangan
 npm test
 ```
 
@@ -76,84 +93,45 @@ npm run preview
 
 ---
 
-## 5. Panduan Menguji Modul Pelaporan Kerusakan (Tahap 2)
+## 5. Panduan Menguji Modul Keuangan & Pembayaran (Tahap 3)
 
-1. **Menguji dari Sudut Pandang Penghuni (Tenant):**
-   - Buka `/login` dan klik tombol **Penghuni (Tenant)**.
-   - Pada dasbor penghuni, klik tombol **Lapor Kerusakan**.
-   - Pada halaman formulir, kamu bisa mengetik deskripsi secara bebas (misal: *"Kran wastafel bocor dan air meluap ke lantai"*) atau klik salah satu tombol **Uji Cepat Klasifikasi AI** di bagian atas.
-   - Amati kotak lencana AI yang otomatis memetakan kategori (misal: *Plumbing / Pipa Air*) dan tingkat urgensinya (*Urgensi Tinggi*).
-   - Unggah foto atau gunakan foto sampel, lalu klik **Kirim Laporan Kerusakan**.
-   - Kamu akan diarahkan kembali ke Dasbor dengan tiket baru berstatus `MENUNGGU`.
+### Skenario 1: Penghuni Mengunggah Bukti Bayar Sewa
+1. Masuk via Quick Login **Penghuni (Tenant)** di `/login`.
+2. Pada dasbor penghuni, amati kartu **Tagihan Sewa Kamar** yang memuat lencana status dan penghitung jatuh tempo.
+3. Klik tautan **Konfirmasi Pembayaran Sewa** menuju `/penghuni/tagihan`.
+4. Salin nomor rekening resmi pengelola (BCA atau Bank Riau Kepri Syariah) menggunakan tombol salin.
+5. Pada formulir konfirmasi pembayaran, pilih foto struk transfer (atau gunakan foto sampel), ketik catatan pengirim (misal: *"Transfer via BCA an. Siti Rahma"*), lalu klik **Kirim Bukti Pembayaran**.
+6. Status seketika berubah menjadi `MENUNGGU VERIFIKASI`.
 
-2. **Menguji dari Sudut Pandang Penjaga Kos (Staff):**
-   - Buka `/login` dan klik tombol **Penjaga (Staff)**.
-   - Buka menu **Perbaikan Fasilitas** (`/penjaga/perbaikan`).
-   - Cari tiket yang baru diajukan, lalu klik tombol **Perbarui Penanganan**.
-   - Di modal yang muncul:
-     - Ubah status menjadi `DIPROSES` atau `SELESAI`.
-     - Unggah foto hasil perbaikan (*after*).
-     - Tulis catatan teknisi (misal: *"Pipa telah diganti dengan fitting baru anti-bocor"*).
-     - Masukkan estimasi biaya realisasi.
-     - Klik **Simpan Pembaruan**.
-   - Tiket akan langsung berpindah tab menjadi `SELESAI` dengan foto *before-after* berdampingan.
+### Skenario 2: Pemilik Memverifikasi Pembayaran Sewa (Setujui / Tolak)
+1. Keluar akun, masuk via Quick Login **Pemilik (Owner)** di `/login`.
+2. Pada dasbor pemilik (`/pemilik`), amati banner notifikasi biru: *"Ada X Pembayaran Sewa Menunggu Verifikasi"*.
+3. Klik tombol **Verifikasi Sekarang** menuju `/pemilik/verifikasi`.
+4. Klik thumbnail foto struk untuk memperbesar bukti transfer (*zoom preview*).
+5. Klik **Setujui Pembayaran** -> Status tagihan berubah menjadi `LUNAS`, dan sistem secara otomatis menambahkan catatan mutasi kas pemasukan sebesar Rp700.000 ke buku kas.
+6. Coba juga fitur **Tolak Pembayaran** pada tagihan lain: masukkan alasan (misal: *"Nominal kurang Rp200.000"*), maka tagihan berstatus `DITOLAK` dan penghuni akan melihat alasan penolakan tersebut di dasbornya.
+
+### Skenario 3: Pemilik Mengelola Buku Kas & Mencatat Pengeluaran
+1. Di akun Pemilik, buka menu **Manajemen Keuangan** (`/pemilik/keuangan`).
+2. Amati 4 kartu bento ringkasan keuangan: Total Pemasukan, Total Pengeluaran, Saldo Kas Bersih (*Net Income*), dan Kamar Menunggak.
+3. Klik tombol **Catat Kas Keluar** di pojok kanan atas.
+4. Pilih kategori (misal: *Listrik & Air (PDAM/Token)*), masukkan nominal (misal: `250000`), ketik keterangan, lalu klik **Simpan Pengeluaran**.
+5. Mutasi pengeluaran langsung tampil di tabel ledger kas dengan nominal bertanda merah `- Rp250.000` dan saldo bersih otomatis terupdate.
 
 ---
 
 ## 6. Bukti Tangkapan Layar Pengujian Antarmuka
-Berkas tangkapan layar antarmuka tersimpan di direktori `docs/tangkapan_layar/tahap_02/`:
-- `01_landing_page.png` — Antarmuka utama Landing Page publik Soft Bento
-- `02_halaman_login_quick_login.png` — Halaman Login dengan tombol akses demo instan 3 peran
-- `03_dasbor_penghuni_pelacakan_tiket.png` — Dasbor penghuni dengan pelacak tiket aktif
-- `04_formulir_lapor_dan_klasifikasi_ai.png` — Formulir laporan dengan deteksi klasifikasi AI *real-time*
-- `05_tiket_berhasil_dibuat.png` — Tiket baru berhasil masuk ke antrean dengan lencana urgensi
-- `06_dasbor_penjaga_manajemen_tiket.png` — Antarmuka penjaga kos mengelola antrean tiket
-- `07_modal_pembaruan_penanganan_teknisi.png` — Modal input hasil perbaikan dan foto *after* oleh teknisi
+
+### Berkas Tangkapan Layar Tahap 3 (`docs/tangkapan_layar/tahap_03/`):
+- `01_dasbor_penghuni_status_tagihan.png` — Dasbor penghuni dengan kartu tagihan aktif dan lencana pengingat jatuh tempo
+- `02_halaman_riwayat_tagihan_penghuni.png` — Halaman tagihan penghuni, rekening resmi bank, dan form unggah bukti transfer
+- `03_dasbor_pemilik_ringkasan_keuangan.png` — Dasbor pemilik dengan kartu metrik bento keuangan dan banner verifikasi tertunda
+- `04_halaman_verifikasi_pembayaran_pemilik.png` — Tabel verifikasi pembayaran pemilik dengan pratinjau struk transfer
+- `05_modal_penolakan_pembayaran.png` — Modal input alasan penolakan bukti transfer yang tidak valid
+- `06_halaman_manajemen_keuangan_ledger_kas.png` — Halaman manajemen arus kas dan tabel mutasi buku kas
+- `07_modal_catat_pengeluaran_operasional.png` — Modal pencatatan pengeluaran operasional kos
 
 ---
 
-## 7. Struktur Direktori Proyek
-```text
-src/
-├── assets/                  # Berkas grafis dan logo resmi kos
-│   └── logos/
-├── components/              # Komponen modular antarmuka
-│   ├── cards/               # KartuTiketKerusakan.jsx, DaftarTiketKerusakan.jsx, Lencana
-│   ├── common/              # Tombol WhatsApp melayang & komponen pendukung
-│   ├── feedback/            # SkeletonLoader.jsx, ToastNotification.jsx
-│   └── layout/              # NavbarUtama.jsx, Footer.jsx
-├── context/                 # State global React Context
-│   ├── AuthContext.jsx      # Manajemen sesi login & Quick Login
-│   └── ToastContext.jsx     # Pemanggil notifikasi toast global
-├── data/                    # Berkas data uji eksternal
-│   └── test_data_kerusakan.json # 5 sampel tiket perbaikan realistis
-├── layouts/                 # Tata letak pembungkus rute
-│   ├── MainLayout.jsx       # Layout halaman publik
-│   └── DashboardLayout.jsx  # Layout area dasbor ber-sidebar
-├── pages/                   # Komponen halaman aplikasi
-│   ├── auth/                # LoginPage.jsx (Form & Quick Login)
-│   ├── pemilik/             # DasborPemilik, ManajemenKeuangan, Verifikasi, Prediksi
-│   ├── penghuni/            # DasborPenghuni, FormLaporKerusakan, RiwayatTagihan
-│   ├── penjaga/             # DasborPenjaga, DaftarPerbaikanFasilitas
-│   └── publik/              # LandingPage.jsx, HalamanKatalogKamar.jsx
-├── router/                  # Konfigurasi rute & proteksi RBAC
-│   ├── AppRouter.jsx
-│   └── ProtectedRoute.jsx
-├── services/                # Layanan komunikasi data & AI
-│   ├── api.js               # Konfigurasi klien Axios
-│   └── kerusakanService.js  # Layanan tiket lokal & simulasi klasifikasi AI NLP
-├── tests/                   # Skrip pengujian otomatis
-│   ├── uji_modul_kerusakan.js   # Unit & logic test suite
-│   └── ambil_tangkapan_layar.js # Generator tangkapan layar otomatis
-├── utils/                   # Utilitas pembantu
-│   ├── formatMataUang.js    # Konversi format Rupiah (IDR)
-│   └── formatTanggal.js     # Pembacaan tanggal ramah Indonesia
-├── App.jsx
-├── main.jsx
-└── index.css
-```
-
----
-
-## 8. Lisensi & Tim Pengembang
+## 7. Lisensi & Tim Pengembang
 Dikembangkan oleh Tim Capstone **A26-CS136** ASAH 2026 untuk Kos Putri Alhamra.

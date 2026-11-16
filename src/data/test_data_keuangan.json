@@ -1,0 +1,161 @@
+{
+  "tagihan_sewa": [
+    {
+      "id": "TAG-2026-11-005",
+      "tenant_id": "usr-tenant-003",
+      "nama_penghuni": "Siti Rahma",
+      "nomor_kamar": "A-05",
+      "tipe_kamar": "Tipe Sendiri",
+      "periode_bulan": "November 2026",
+      "jatuh_tempo": "2026-11-01",
+      "nominal": 700000,
+      "status": "menunggu_verifikasi",
+      "bukti_transfer_url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80",
+      "tanggal_unggah": "2026-11-02T10:30:00.000Z",
+      "verified_at": null,
+      "alasan_penolakan": null,
+      "catatan_penghuni": "Transfer via BCA Mobile a.n. Siti Rahma untuk sewa bulan November 2026."
+    },
+    {
+      "id": "TAG-2026-11-001",
+      "tenant_id": "usr-tenant-001",
+      "nama_penghuni": "Putri Handayani",
+      "nomor_kamar": "A-01",
+      "tipe_kamar": "Tipe Sendiri",
+      "periode_bulan": "November 2026",
+      "jatuh_tempo": "2026-11-01",
+      "nominal": 700000,
+      "status": "lunas",
+      "bukti_transfer_url": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80",
+      "tanggal_unggah": "2026-10-31T14:20:00.000Z",
+      "verified_at": "2026-11-01T08:15:00.000Z",
+      "alasan_penolakan": null,
+      "catatan_penghuni": "Sewa bulan November kamar A-01 lunas transfer BCA."
+    },
+    {
+      "id": "TAG-2026-11-002",
+      "tenant_id": "usr-tenant-004",
+      "nama_penghuni": "Dina Amalia",
+      "nomor_kamar": "B-02",
+      "tipe_kamar": "Tipe Berdua",
+      "periode_bulan": "November 2026",
+      "jatuh_tempo": "2026-11-01",
+      "nominal": 900000,
+      "status": "lunas",
+      "bukti_transfer_url": "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=600&q=80",
+      "tanggal_unggah": "2026-11-01T09:00:00.000Z",
+      "verified_at": "2026-11-01T11:45:00.000Z",
+      "alasan_penolakan": null,
+      "catatan_penghuni": "Pembayaran sewa kamar berdua B-02."
+    },
+    {
+      "id": "TAG-2026-11-003",
+      "tenant_id": "usr-tenant-005",
+      "nama_penghuni": "Nurul Hidayah",
+      "nomor_kamar": "A-03",
+      "tipe_kamar": "Tipe Sendiri",
+      "periode_bulan": "November 2026",
+      "jatuh_tempo": "2026-11-01",
+      "nominal": 700000,
+      "status": "ditolak",
+      "bukti_transfer_url": "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=600&q=80",
+      "tanggal_unggah": "2026-11-03T16:00:00.000Z",
+      "verified_at": "2026-11-03T17:30:00.000Z",
+      "alasan_penolakan": "Nominal transfer kurang Rp200.000 (hanya tertulis Rp500.000). Mohon transfer kekurangannya atau upload bukti transfer baru.",
+      "catatan_penghuni": "Pembayaran sewa kamar A-03."
+    },
+    {
+      "id": "TAG-2026-11-004",
+      "tenant_id": "usr-tenant-006",
+      "nama_penghuni": "Rina Marlina",
+      "nomor_kamar": "A-08",
+      "tipe_kamar": "Tipe Sendiri",
+      "periode_bulan": "November 2026",
+      "jatuh_tempo": "2026-11-01",
+      "nominal": 700000,
+      "status": "belum_bayar",
+      "bukti_transfer_url": null,
+      "tanggal_unggah": null,
+      "verified_at": null,
+      "alasan_penolakan": null,
+      "catatan_penghuni": null
+    },
+    {
+      "id": "TAG-2026-11-006",
+      "tenant_id": "usr-tenant-007",
+      "nama_penghuni": "Sarah Azhari",
+      "nomor_kamar": "B-01",
+      "tipe_kamar": "Tipe Berdua",
+      "periode_bulan": "November 2026",
+      "jatuh_tempo": "2026-11-01",
+      "nominal": 900000,
+      "status": "belum_bayar",
+      "bukti_transfer_url": null,
+      "tanggal_unggah": null,
+      "verified_at": null,
+      "alasan_penolakan": null,
+      "catatan_penghuni": null
+    }
+  ],
+  "transaksi_kas": [
+    {
+      "id": "TRX-2026-11-001",
+      "payment_id": "TAG-2026-11-001",
+      "kategori": "sewa_kamar",
+      "jenis_kas": "pemasukan",
+      "nominal": 700000,
+      "keterangan": "Pelunasan sewa kamar A-01 (Putri Handayani) - Nov 2026",
+      "tanggal_transaksi": "2026-11-01"
+    },
+    {
+      "id": "TRX-2026-11-002",
+      "payment_id": "TAG-2026-11-002",
+      "kategori": "sewa_kamar",
+      "jenis_kas": "pemasukan",
+      "nominal": 900000,
+      "keterangan": "Pelunasan sewa kamar berdua B-02 (Dina Amalia) - Nov 2026",
+      "tanggal_transaksi": "2026-11-01"
+    },
+    {
+      "id": "TRX-2026-11-003",
+      "payment_id": null,
+      "kategori": "gaji_staff",
+      "jenis_kas": "pengeluaran",
+      "nominal": 1500000,
+      "keterangan": "Gaji operasional bulanan penjaga kos (Pak Joko)",
+      "tanggal_transaksi": "2026-11-01"
+    },
+    {
+      "id": "TRX-2026-11-004",
+      "payment_id": null,
+      "kategori": "listrik_air",
+      "jenis_kas": "pengeluaran",
+      "nominal": 350000,
+      "keterangan": "Tagihan air PDAM & token listrik pompa air bersama",
+      "tanggal_transaksi": "2026-11-03"
+    },
+    {
+      "id": "TRX-2026-11-005",
+      "payment_id": null,
+      "kategori": "perbaikan",
+      "jenis_kas": "pengeluaran",
+      "nominal": 135000,
+      "keterangan": "Penggantian stopkontak SNI dan kabel isolasi dapur (TIK-2026-002)",
+      "tanggal_transaksi": "2026-11-14"
+    }
+  ],
+  "rekening_pengelola": [
+    {
+      "nama_bank": "Bank Central Asia (BCA)",
+      "nomor_rekening": "824-098-1122",
+      "atas_nama": "Yusuf (Pemilik Kos)",
+      "logo_inisial": "BCA"
+    },
+    {
+      "nama_bank": "Bank Riau Kepri Syariah",
+      "nomor_rekening": "101-203-9988",
+      "atas_nama": "Yusuf (Pemilik Kos)",
+      "logo_inisial": "BRK"
+    }
+  ]
+}
