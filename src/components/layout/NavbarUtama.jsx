@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Home, Bed, ShieldCheck, MapPin, HelpCircle, LogIn, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import logoAlhamra from '../../assets/logos/logo-alhamra.svg';
 
 export const NavbarUtama = () => {
   const [bukaMenuMobile, setBukaMenuMobile] = useState(false);
@@ -36,8 +37,12 @@ export const NavbarUtama = () => {
             to="/"
             className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-kuning-mas rounded-lg"
           >
-            <div className="w-11 h-11 rounded-xl bg-marun flex items-center justify-center text-kuning-mas font-bold text-xl shadow-sm group-hover:scale-105 transition-transform">
-              KA
+            <div className="w-12 h-12 rounded-xl bg-latar p-1 flex items-center justify-center border border-garis shadow-sm group-hover:scale-105 transition-transform overflow-hidden">
+              <img
+                src={logoAlhamra}
+                alt="Logo Resmi Kos Putri Alhamra"
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-lg text-marun tracking-tight leading-none">

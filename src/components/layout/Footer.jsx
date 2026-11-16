@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, ShieldCheck, Heart } from 'lucide-react';
+import logoAlhamra from '../../assets/logos/logo-alhamra.svg';
 
 export const Footer = () => {
   return (
@@ -9,8 +10,12 @@ export const Footer = () => {
           {/* Kolom 1: Profil Kos */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-kuning-mas text-cokelat-tua font-bold text-lg flex items-center justify-center">
-                KA
+              <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-sm overflow-hidden">
+                <img
+                  src={logoAlhamra}
+                  alt="Logo Kos Putri Alhamra"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="font-bold text-xl text-kuning-mas tracking-tight">
                 Kos Putri Alhamra

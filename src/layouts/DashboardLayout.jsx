@@ -18,6 +18,7 @@ import {
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import WidgetChatbot from '../components/common/WidgetChatbot';
+import logoAlhamra from '../assets/logos/logo-alhamra.svg';
 
 export const DashboardLayout = () => {
   const { pengguna, logout } = useAuth();
@@ -71,8 +72,12 @@ export const DashboardLayout = () => {
       <aside className="hidden md:flex flex-col w-72 bg-permukaan border-r border-garis shrink-0 min-h-screen p-6">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-3 pb-6 border-b border-garis">
-          <div className="w-10 h-10 rounded-xl bg-marun flex items-center justify-center text-kuning-mas font-bold text-lg">
-            KA
+          <div className="w-11 h-11 rounded-xl bg-latar p-1 flex items-center justify-center border border-garis shadow-sm overflow-hidden shrink-0">
+            <img
+              src={logoAlhamra}
+              alt="Logo Kos Putri Alhamra"
+              className="w-full h-full object-contain"
+            />
           </div>
           <div>
             <h2 className="font-bold text-base text-marun leading-tight">
@@ -141,9 +146,13 @@ export const DashboardLayout = () => {
 
       {/* Header Mobile */}
       <div className="md:hidden bg-permukaan border-b border-garis px-4 py-3.5 flex items-center justify-between sticky top-0 z-30">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-marun text-kuning-mas font-bold text-sm flex items-center justify-center">
-            KA
+        <Link to="/" className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-latar p-0.5 flex items-center justify-center border border-garis shadow-sm overflow-hidden shrink-0">
+            <img
+              src={logoAlhamra}
+              alt="Logo Kos Putri Alhamra"
+              className="w-full h-full object-contain"
+            />
           </div>
           <span className="font-bold text-sm text-marun">Portal Alhamra</span>
         </Link>

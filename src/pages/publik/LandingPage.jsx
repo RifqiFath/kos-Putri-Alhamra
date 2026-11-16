@@ -27,6 +27,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import formatMataUang from '../../utils/formatMataUang';
+import logoAlhamra from '../../assets/logos/logo-alhamra.svg';
 
 export const LandingPage = () => {
   const nomorWhatsApp = '6281371958826';
@@ -132,9 +133,19 @@ export const LandingPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Kolom Teks Hero */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-kuning-mas/20 border border-kuning-mas/40 text-cokelat-tua text-xs font-semibold">
-                <Sparkles className="w-4 h-4 text-marun" />
-                <span>Rumah kos minimalis, unik, bersih, dan nyaman</span>
+              {/* Logo Resmi & Lencana Slogan */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3.5">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white p-2 border border-garis shadow-sm shrink-0 flex items-center justify-center">
+                  <img
+                    src={logoAlhamra}
+                    alt="Logo Resmi Kos Putri Alhamra"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-kuning-mas/20 border border-kuning-mas/40 text-cokelat-tua text-xs font-semibold w-fit">
+                  <Sparkles className="w-4 h-4 text-marun" />
+                  <span>Rumah kos minimalis, unik, bersih, dan nyaman</span>
+                </div>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-marun tracking-tight leading-[1.15]">
