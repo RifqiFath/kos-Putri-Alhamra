@@ -27,3 +27,10 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+
+# Root docs (disimpan di dalam direktori docs/)
+/agent.md
+/styleguide.md
+/spec.md
+/data landing page kos putri alhamra.md
+
