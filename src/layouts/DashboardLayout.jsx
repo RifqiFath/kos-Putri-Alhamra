@@ -75,7 +75,7 @@ export const DashboardLayout = () => {
           <img
             src={logoAlhamra}
             alt="Kos Putri Alhamra"
-            className="h-14 w-auto max-h-[56px] object-contain"
+            className="h-20 sm:h-22 w-auto max-h-[88px] object-contain"
           />
         </Link>
 
@@ -142,7 +142,7 @@ export const DashboardLayout = () => {
           <img
             src={logoAlhamra}
             alt="Kos Putri Alhamra"
-            className="h-9 w-auto object-contain"
+            className="h-14 w-auto object-contain"
           />
         </Link>
         <button

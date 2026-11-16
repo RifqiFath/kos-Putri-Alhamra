@@ -31,16 +31,16 @@ export const NavbarUtama = () => {
   return (
     <header className="sticky top-0 z-40 bg-permukaan/90 backdrop-blur-md border-b border-garis transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo Resmi Kos Putri Alhamra */}
+        <div className="flex items-center justify-between h-24 sm:h-28">
+          {/* Logo Resmi Kos Putri Alhamra (Ukuran +50%) */}
           <Link
             to="/"
-            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-kuning-mas rounded-lg"
+            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-kuning-mas rounded-lg py-1.5"
           >
             <img
               src={logoAlhamra}
               alt="Kos Putri Alhamra"
-              className="h-16 w-auto max-h-[72px] object-contain group-hover:scale-105 transition-transform"
+              className="h-24 sm:h-28 w-auto max-h-[92px] sm:max-h-[108px] object-contain group-hover:scale-105 transition-transform"
             />
           </Link>
 

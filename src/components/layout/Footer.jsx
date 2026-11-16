@@ -10,11 +10,11 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-permukaan/10">
           {/* Kolom 1: Profil Kos */}
           <div className="md:col-span-2 space-y-4">
-            <Link to="/" className="inline-block">
+            <Link to="/" className="inline-block py-1">
               <img
                 src={logoAlhamra}
                 alt="Kos Putri Alhamra"
-                className="h-14 w-auto object-contain brightness-0 invert"
+                className="h-20 sm:h-24 w-auto object-contain brightness-0 invert"
               />
             </Link>
             <p className="text-permukaan/80 text-sm leading-relaxed max-w-md">
