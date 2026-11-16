@@ -4,28 +4,23 @@ Semua perubahan penting pada proyek **Kos Putri Alhamra** didokumentasikan dalam
 
 ---
 
-## [v0.4.0] - 2026-11-16
+## [v0.4.0] - 2026-11-17
 ### Ditambahkan
-- **Widget Chatbot Asisten Virtual AI RAG (`WidgetChatbot.jsx`):**
-  - Komponen pemicu tombol mengambang (*floating action button*) di sudut kanan bawah yang berdampingan serasi dengan tombol WhatsApp pengelola.
-  - Jendela percakapan interaktif (*chat window*) bergaya *Soft Bento* responsif dengan header avatar asisten Alhamra, status online aktif, tombol atur ulang percakapan, dan tombol tutup.
-  - Gelembung pesan yang membedakan pesan pengguna (*user*) dan asisten Alhamra (*bot*).
-  - Animasi mengetik berdenyut (*typing indicator*) dengan simulasi waktu tunggu inferensi AI RAG (400–700 ms).
-  - Komponen chip pertanyaan cepat (*Quick FAQ Pills*) untuk jawaban populer satu sentuhan (Harga Sewa, Jam Malam, Fasilitas, Aturan Tamu, Jadwal Survei, Lapor Kerusakan).
-  - Tautan aksi pengarahan (*Action Redirect Links*) di dalam balon respon bot (menuju halaman lapor kerusakan, kuitansi tagihan sewa, Google Maps lokasi kos, atau WhatsApp pengelola).
-- **Modul Layanan Chatbot & Intent Router Mock (`services/chatService.js`):**
-  - Implementasi fungsi `ambilPertanyaanCepat`, `klasifikasiIntent`, dan `prosesPesanChatbot`.
-  - Mesin klasifikasi intent semantik berbasis pencocokan kata kunci dan bobot relevansi bersumber dari `data landing page kos putri alhamra.md`.
-  - Dukungan intent: `info_harga`, `aturan_jam_malam`, `info_fasilitas`, `aturan_tamu`, `lokasi_kampus`, `lapor_kerusakan`, `cek_tagihan`, `jadwal_survei`, `larangan_kos`, `hubungi_pemilik`, dan `di_luar_konteks` (fallback ramah WhatsApp Pak Yusuf).
+- **Redesign Editorial Anti-Slop Landing Page (`LandingPage.jsx`):**
+  - Mengatasi kejenuhan kotak (*card fatigue*) dengan membuang border tipis berlebihan dan menerapkan transisi warna permukaan (*Zebra Striping* dan *Surface Layering*).
+  - Elevasi Hero Section dengan 1 Primary CTA menyala tegas (*Pesan via WhatsApp* warna Kuning Emas), 1 Secondary CTA teks elegan, dan kartu tarif eksklusif bergaya *Floating Tactile Card* berbayangan dalam (`shadow-2xl`).
+  - Integrasi logo resmi Alhamra murni (+50% lebih lebar) di navigasi atas dan favicon situs web resmi `icon.svg`.
+  - Transformasi bagian fasilitas menjadi infografis editorial bernomor raksasa (`01` s/d `08`) ala majalah arsitektur.
+  - Galeri foto asimetris (*Asymmetrical Editorial Grid*) dengan caption majalah monokrom.
+  - Quote blocks testimoni elegan berlatar tanda kutip raksasa transparan (`“`).
+  - FAQ akordeon minimalis bergaris pemisah bersih (*clean underline divider*).
+  - Tombol melayang WhatsApp pengelola ditempatkan secara ideal di sudut kanan bawah (`bottom-6 right-6`).
 - **Polesan Konsistensi Desain Tiga Dasbor Peran (*Soft Bento Refinement*):**
-  - **Dasbor Penghuni (`DasborPenghuni.jsx`):** Kartu bento informasi unit hunian (nomor kamar, tipe kamar, lantai, fasilitas kamar mandi dalam, status air & wifi gratis), ringkasan status tagihan sewa bulanan, lencana hitung mundur jatuh tempo tanggal 1, aturan jam malam (22.00 / 22.30 WIB), serta pelacakan tiket perbaikan.
+  - **Dasbor Penghuni (`DasborPenghuni.jsx`):** Kartu sorotan unit hunian (nomor kamar, tipe kamar, lantai, fasilitas kamar mandi dalam, status air & wifi gratis), ringkasan status tagihan sewa bulanan, lencana hitung mundur jatuh tempo tanggal 1, aturan jam malam (22.00 / 22.30 WIB), serta pelacakan tiket perbaikan.
   - **Dasbor Penjaga (`DasborPenjaga.jsx`):** 4 kartu metrik antrean tiket perbaikan (menunggu, diproses, selesai, kritis), modul **Log Kontrol Kebersihan & Fasilitas Bersama Harian** (dapur bersama, area jemuran, parkiran motor beratap, ruang TV & gembok pagar) dengan tombol toggle status periksa, serta daftar antrean tiket pengerjaan.
   - **Dasbor Pemilik (`DasborPemilik.jsx`):** Metrik ringkas keuangan arus kas, banner peringatan verifikasi struk transfer tertunda, modul visualisasi **Denah Okupansi 20 Kamar Kos Putri Alhamra** (16 kamar sendiri, 4 kamar berdua; 19 terisi hijau emerald, 1 tersedia kuning-mas siap huni), dan pintasan modul manajemen.
-- **Data Uji Eksternal & Suite Pengujian Otomatis:**
-  - Berkas `src/data/test_data_chatbot.json` berisi basis pengetahuan FAQ komprehensif dan intent semantik.
-  - Skrip pengujian unit dan logika chatbot `src/tests/uji_modul_chat.js` yang terintegrasi ke perintah `npm test` (12/12 pengujian intent & async lolos 100%).
-  - Skrip otomatisasi tangkapan layar peramban `src/tests/ambil_tangkapan_layar_tahap04.js`.
-  - Berkas tangkapan layar PNG resmi yang tersimpan di `docs/tangkapan_layar/tahap_04/`.
+- **Tangkapan Layar & Verifikasi:**
+  - Skrip pengujian otomatis `src/tests/ambil_tangkapan_layar_tahap04.js` dan berkas tangkapan layar PNG resmi yang tersimpan di `docs/tangkapan_layar/tahap_04/`.
 
 ---
 

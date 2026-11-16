@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
-import WidgetChatbot from '../components/common/WidgetChatbot';
 import logoAlhamra from '../assets/logos/logo-alhamra.svg';
 
 export const DashboardLayout = () => {
@@ -204,7 +203,6 @@ export const DashboardLayout = () => {
           <Outlet />
         </div>
       </main>
-      <WidgetChatbot />
     </div>
   );
 };

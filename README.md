@@ -50,23 +50,20 @@ Website terintegrasi untuk pengelolaan operasional, pelaporan kerusakan fasilita
   - Lencana pengingat aktif di dasbor penghuni dan banner peringatan verifikasi tertunda di dasbor pemilik.
 - **Data Uji Eksternal:** `src/data/test_data_keuangan.json` berisi data tagihan sewa bulanan dan mutasi arus kas operasional.
 
-### Tahap 4 (Rilis v0.4.0 — Widget Chatbot Asisten Virtual AI RAG & Polesan Tiga Dasbor Peran)
-- **Widget Chatbot Mengambang (`WidgetChatbot.jsx`):**
-  - Pemicu gelembung chat melayang di sudut kanan bawah bersanding serasi dengan tombol WhatsApp pengelola.
-  - Jendela obrolan (*chat window*) bergaya *Soft Bento* responsif dengan header status aktif real-time, tombol atur ulang obrolan (*reset*), dan minimize/close.
-  - Gelembung percakapan pembeda antara pesan pengguna (*user*) dan asisten Alhamra (*bot*).
-  - Animasi mengetik berdenyut (*typing indicator*) dengan simulasi latensi AI RAG yang realistis (400–700 ms).
-  - Komponen chip pertanyaan cepat (*Quick FAQ Pills*) untuk jawaban populer satu klik (Harga Sewa, Jam Malam, Fasilitas, Aturan Tamu, Jadwal Survei, Lapor Kerusakan).
-  - Mekanisme pengarahan aksi cepat (*Action Redirect Link*) di dalam respon bot (tautan langsung ke formulir lapor kerusakan, menu kuitansi tagihan, rute Google Maps, atau WhatsApp pengelola).
-- **Layanan Chatbot & Intent Router Mock AI (`services/chatService.js`):**
-  - Mesin pencocokan semantik kata kunci berbasis bobot (*intent router*) bersumber dari panduan resmi `data landing page kos putri alhamra.md`.
-  - Intent terdukung: `info_harga`, `aturan_jam_malam`, `info_fasilitas`, `aturan_tamu`, `lokasi_kampus`, `lapor_kerusakan`, `cek_tagihan`, `jadwal_survei`, `larangan_kos`, `hubungi_pemilik`, dan `di_luar_konteks` (fallback ramah WhatsApp Pak Yusuf).
+### Tahap 4 (Rilis v0.4.0 — Polesan Tiga Dasbor Peran & Desain Editorial Anti-Slop Landing Page)
+- **Redesign Editorial Anti-Slop Landing Page (`LandingPage.jsx`):**
+  - **Mengatasi *Card Fatigue*:** Membuang lebih dari 60% garis border tipis abu-abu yang mengurung elemen, menggantinya dengan pemisahan warna permukaan (*Zebra Striping* dan *Surface Layering*).
+  - **Elevasi Hero Section:** Menyederhanakan tombol aksi menjadi 1 Primary CTA yang bersinar tegas (`Pesan via WhatsApp` warna Kuning Emas) dan 1 Secondary CTA elegan (`Lihat Pilihan Kamar & Tarif`), dilengkapi kartu tarif eksklusif bergaya *Floating Tactile Card* berbayangan dalam (`shadow-2xl`).
+  - **Integrasi Logo Alhamra Murni (+50% Lebih Lebar):** Logo resmi Alhamra berukuran gagah tampil mandiri di navbar atas tanpa kotak pembungkus dan tanpa teks duplikat. Tab browser menggunakan favicon resmi `icon.svg`.
+  - **Transformasi Fasilitas Menjadi Infografis Editorial (01–08):** Mengganti grid 4x2 kotak abu-abu generik dengan tipografi angka raksasa semi-transparan `01` s/d `08` bergaya majalah arsitektur.
+  - **Galeri Foto Asimetris (*Asymmetrical Editorial Grid*):** 1 foto utama tampak depan fasad besar di kiri dengan caption majalah monokrom, berdampingan dengan grid pendukung interior kamar, sanitasi, dapur, dan parkir.
+  - **Quote Blocks Testimoni Elegan:** Ulasan Google Maps disajikan dalam kartu kutipan lapang berlatar tanda kutip raksasa transparan (`“`).
+  - **FAQ Akordeon Minimalis:** Garis pembatas horizontal tipis yang bersih (*clean underline divider*).
+  - **Tombol WhatsApp Melayang:** Tombol kontak WhatsApp pengelola berada di posisi ideal sudut kanan bawah (`bottom-6 right-6`).
 - **Polesan Konsistensi Desain Tiga Dasbor Peran (*Soft Bento Refinement*):**
-  - **Dasbor Penghuni (`DasborPenghuni.jsx`):** Kartu sorotan unit hunian (nomor kamar, tipe sendiri/berdua, lantai, fasilitas aktif air & wifi gratis), ringkasan status tagihan sewa bulanan, lencana hitung mundur jatuh tempo tanggal 1, aturan jam malam (22.00 / 22.30 WIB), serta pelacakan tiket perbaikan.
+  - **Dasbor Penghuni (`DasborPenghuni.jsx`):** Kartu sorotan unit hunian (nomor kamar A-05, tipe kamar, lantai, fasilitas aktif air & wifi gratis), ringkasan status tagihan sewa bulanan, lencana hitung mundur jatuh tempo tanggal 1, aturan jam malam (22.00 / 22.30 WIB), serta pelacakan tiket perbaikan.
   - **Dasbor Penjaga (`DasborPenjaga.jsx`):** 4 kartu metrik antrean tiket perbaikan (menunggu, diproses, selesai, kritis), modul **Log Kontrol Kebersihan & Fasilitas Bersama Harian** (dapur bersama, area jemuran, parkiran motor beratap, ruang TV & gembok pagar) dengan tombol toggle status periksa, serta daftar antrean tiket pengerjaan.
   - **Dasbor Pemilik (`DasborPemilik.jsx`):** Metrik ringkas keuangan arus kas, banner peringatan verifikasi struk transfer tertunda, modul visualisasi **Denah Okupansi 20 Kamar Kos Putri Alhamra** (16 kamar sendiri, 4 kamar berdua; 19 terisi hijau emerald, 1 tersedia kuning-mas siap huni), dan pintasan modul manajemen.
-- **Data Uji Eksternal:** `src/data/test_data_chatbot.json` berisi basis pengetahuan FAQ komprehensif dan intent semantik.
-- **Suite Pengujian Unit:** `src/tests/uji_modul_chat.js` memvalidasi 12 skenario klasifikasi intent dan pemanggilan asinkron (100% lolos).
 
 ---
 
@@ -138,16 +135,14 @@ npm run preview
 
 ---
 
-## 6. Panduan Menguji Widget Chatbot & Dasbor Peran (Tahap 4)
+## 6. Panduan Mengamati Fitur Landing Page & Dasbor Peran (Tahap 4)
 
-### Skenario 1: Pengunjung Berinteraksi dengan Chatbot Asisten Virtual
+### Skenario 1: Menjelajahi Tampilan Editorial Anti-Slop Landing Page
 1. Buka halaman utama (*landing page*) di `/`.
-2. Di pojok kanan bawah, amati tombol melayang **Tanya Asisten AI** (berdampingan serasi dengan tombol WhatsApp pengelola).
-3. Klik tombol **Tanya Asisten AI** untuk membuka jendela chat *Soft Bento*.
-4. Klik chip FAQ Cepat **Harga Sewa** atau ketik *"Berapa biaya sewa kamar sendiri?"* lalu tekan Enter.
-5. Bot memunculkan indikator mengetik sejenak, lalu membalas dengan rincian harga sewa (Rp700.000 / Rp900.000, air termasuk, token listrik) serta tombol aksi *"Lihat Pilihan Kamar"*.
-6. Coba tanyakan *"Bagaimana cara lapor keran air bocor?"*, bot akan menjawab dan menyertakan tautan aksi *"Buka Formulir Lapor Kerusakan"*.
-7. Coba tanyakan hal di luar topik (misal *"Siapakah astronaut pertama?"*), bot secara ramah akan menawarkan bantuan untuk menghubungi Pak Yusuf via WhatsApp.
+2. Amati logo resmi Alhamra yang tampil bersih tanpa box dan tanpa teks duplikat pada bilah navigasi atas.
+3. Di pojok kanan bawah, amati tombol melayang WhatsApp pengelola yang siap dihubungi satu sentuhan.
+4. Perhatikan bagian Hero: Judul megah, lencana slogan pill, 1 tombol utama *Pesan via WhatsApp* warna kuning emas, dan kartu tarif mengambang eksklusif di kanan.
+5. Gulir ke bawah mengamati bagian Tipe Kamar, infografis bernomor 01–08 pada Fasilitas, galeri arsitektur asimetris, kutipan testimoni berlatar tanda kutip besar, dan akordeon FAQ bergaris bersih.
 
 ### Skenario 2: Mengamati Tiga Dasbor Peran yang Dipoles
 1. **Dasbor Penghuni (`/penghuni`):** Amati kartu bento unit hunian lengkap dengan detail nomor kamar, tipe kamar, status air & wifi, kartu tagihan sewa bulanan, dan pelacak tiket perbaikan.
@@ -159,11 +154,10 @@ npm run preview
 ## 7. Bukti Tangkapan Layar Pengujian Antarmuka
 
 ### Berkas Tangkapan Layar Tahap 4 (`docs/tangkapan_layar/tahap_04/`):
-- `01_landing_page_widget_chat_melayang.png` — Landing page publik dengan tombol pemicu chatbot mengambang dan tombol WhatsApp
-- `02_widget_chatbot_terbuka_interaksi.png` — Jendela chat bento interaktif dengan jawaban AI RAG dan chip Quick FAQ
-- `03_dasbor_penghuni_dipoles.png` — Dasbor penghuni dengan kartu bento unit hunian, fasilitas aktif, dan status tagihan sewa
-- `04_dasbor_penjaga_log_kebersihan.png` — Dasbor penjaga dengan antrean tiket dan modul log kontrol kebersihan/fasilitas harian
-- `05_dasbor_pemilik_denah_okupansi_20kamar.png` — Dasbor pemilik dengan metrik kas dan grid denah okupansi 20 kamar (19 terisi, 1 tersedia)
+- `01_landing_page_anti_slop.png` — Landing page editorial dengan elevasi hero dan tombol WhatsApp mengambang
+- `02_dasbor_penghuni_dipoles.png` — Dasbor penghuni dengan kartu bento unit hunian, fasilitas aktif, dan status tagihan sewa
+- `03_dasbor_penjaga_log_kebersihan.png` — Dasbor penjaga dengan antrean tiket dan modul log kontrol kebersihan/fasilitas harian
+- `04_dasbor_pemilik_denah_okupansi_20kamar.png` — Dasbor pemilik dengan metrik kas dan grid denah okupansi 20 kamar (19 terisi, 1 tersedia)
 
 ### Berkas Tangkapan Layar Tahap 3 (`docs/tangkapan_layar/tahap_03/`):
 - `01_dasbor_penghuni_status_tagihan.png` — Dasbor penghuni dengan kartu tagihan aktif dan lencana pengingat jatuh tempo

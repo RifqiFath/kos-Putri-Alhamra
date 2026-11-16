@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node src/tests/uji_modul_kerusakan.js && node src/tests/uji_modul_keuangan.js && node src/tests/uji_modul_chat.js"
+    "test": "node src/tests/uji_modul_kerusakan.js && node src/tests/uji_modul_keuangan.js"
   },
   "dependencies": {
     "axios": "^1.21.1",
