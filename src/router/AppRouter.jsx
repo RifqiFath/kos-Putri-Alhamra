@@ -44,7 +44,7 @@ export const AppRouter = () => {
       <Route
         path="/penghuni"
         element={
-          <ProtectedRoute peranDiizinkan={['tenant', 'owner']}>
+          <ProtectedRoute peranDiizinkan={['tenant', 'staff', 'owner']}>
             <DashboardLayout />
           </ProtectedRoute>
         }
@@ -65,6 +65,7 @@ export const AppRouter = () => {
       >
         <Route index element={<DasborPenjaga />} />
         <Route path="perbaikan" element={<DaftarPerbaikanFasilitas />} />
+        <Route path="lapor-kerusakan" element={<FormLaporKerusakan />} />
       </Route>
 
       {/* Rute Terproteksi: Pemilik (Owner) */}

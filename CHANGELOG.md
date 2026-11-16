@@ -4,6 +4,37 @@ Semua perubahan penting pada proyek **Kos Putri Alhamra** didokumentasikan dalam
 
 ---
 
+## [v0.2.0] - 2026-11-16
+### Ditambahkan
+- **Modul Pelaporan Kerusakan Fasilitas (`FormLaporKerusakan.jsx`):**
+  - Pemilihan lokasi fasilitas (Kamar Mandi Dalam, Kamar Tidur, Dapur Bersama, Area Parkir, dll.).
+  - Input judul ringkas dan deskripsi bebas kendala kerusakan.
+  - Komponen unggah foto kondisi awal (*before*) dengan fitur pratinjau gambar (*preview*) instan dan validasi berkas (maksimal 5 MB, format gambar JPG/PNG/WEBP).
+  - Integrasi simulasi klasifikasi AI *real-time* berbasis NLP yang otomatis mendeteksi kategori fasilitas (`plumbing`, `listrik`, `furnitur`, `kebersihan`), menentukan tingkat urgensi (`rendah`, `sedang`, `tinggi`), menghitung skor urgensi, dan memberikan penjelasan alasan pertimbangan keselamatan.
+  - Tombol pintasan **Uji Cepat Klasifikasi AI** (Kasus Stopkontak Berasap, Pipa Wastafel Bocor, Engsel Lemari Kendor) untuk memudahkan penilai dan pengembang mencoba skenario AI instan tanpa mengetik manual.
+  - Validasi formulir menggunakan notifikasi mengambang `ToastNotification`.
+- **Layanan Penyimpanan & Simulasi AI (`services/kerusakanService.js`):**
+  - Implementasi fungsi `ambilSemuaTiket`, `ambilTiketBerdasarkanId`, `buatTiketBaru`, `perbaruiStatusTiket`, dan `resetDataTiketKeAwal`.
+  - Simulasi pemanggilan API asinkron dengan penyimpanan persisten di penyimpanan lokal peramban.
+  - Implementasi fungsi inferensi `klasifikasiKerusakanAI` dengan pembobotan semantik kata kunci multi-kategori dan analisis risiko darurat.
+- **Modul Pemantauan & Riwayat Tiket Perbaikan (`DaftarTiketKerusakan.jsx`):**
+  - Kartu bento informasi tiket lengkap dengan lencana status (`MENUNGGU`, `DIPROSES`, `SELESAI`), lencana kategori AI, lencana urgensi, galeri foto before-after, serta catatan teknisi.
+  - Fitur interaktif perbesaran foto (*modal zoom preview*).
+  - Tab penyaring status dinamis, filter kategori AI, filter tingkat urgensi, serta pencarian kata kunci teks.
+  - **Aksi Penjaga Kos (Staff):** Modal interaktif pembaruan penanganan tiket untuk mengubah status, mengunggah foto hasil pekerjaan (*after*), mencatat tindakan teknisi, dan mengisi biaya realisasi perbaikan.
+  - Integrasi komponen `SkeletonLoader` saat data tiket sedang dimuat.
+- **Data Uji Eksternal & Suite Pengujian Otomatis:**
+  - Berkas `src/data/test_data_kerusakan.json` berisi 5 variasi sampel tiket kerusakan realistis.
+  - Skrip pengujian unit dan logika inferensi AI `src/tests/uji_modul_kerusakan.js` yang terhubung ke perintah `npm test`.
+  - Skrip otomatisasi tangkapan layar antarmuka `src/tests/ambil_tangkapan_layar.js`.
+  - 7 berkas tangkapan layar PNG resmi yang tersimpan di `docs/tangkapan_layar/tahap_02/`.
+- **Pembaruan Navigasi & Dasbor:**
+  - Integrasi pelacak tiket aktif pada dasbor penghuni (`DasborPenghuni.jsx`).
+  - Integrasi metrik dinamis dan manajemen antrean tiket pada dasbor penjaga (`DasborPenjaga.jsx`).
+  - Pembaruan rute dan menu sidebar dasbor staf untuk akses cepat pencatatan kerusakan baru.
+
+---
+
 ## [v0.1.0] - 2026-11-16
 ### Ditambahkan
 - **Inisialisasi Proyek & Git:**
@@ -38,7 +69,6 @@ Semua perubahan penting pada proyek **Kos Putri Alhamra** didokumentasikan dalam
   - Kerangka shell dasbor Penghuni (`DasborPenghuni.jsx`, `FormLaporKerusakan.jsx`, `RiwayatTagihan.jsx`).
   - Kerangka shell dasbor Penjaga (`DasborPenjaga.jsx`, `DaftarPerbaikanFasilitas.jsx`).
   - Kerangka shell dasbor Pemilik (`DasborPemilik.jsx`, `ManajemenKeuangan.jsx`, `VerifikasiPembayaran.jsx`, `AnalitikPrediksiChurn.jsx`).
-  - Penandaan placeholder `<!-- dikerjakan oleh [Nama] -->` sesuai pembagian modul tim.
 - **Dokumentasi Proyek:**
   - Penulisan panduan instalasi dan penggunaan pada `README.md`.
   - Penyediaan folder tangkapan layar di `docs/tangkapan_layar/tahap_01/`.

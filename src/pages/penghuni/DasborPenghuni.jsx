@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Wrench, CreditCard, ShieldCheck, Clock, AlertCircle } from 'lucide-react';
+import { Home, Wrench, CreditCard, ShieldCheck, Clock, PlusCircle } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import formatMataUang from '../../utils/formatMataUang';
+import DaftarTiketKerusakan from '../../components/cards/DaftarTiketKerusakan';
 
 export const DasborPenghuni = () => {
   const { pengguna } = useAuth();
 
   return (
-    <div className="space-y-6">
-      {/* <!-- dikerjakan oleh Fathin Ahmad Zidan & Tim --> */}
+    <div className="space-y-8">
+      {/* <!-- dikerjakan oleh Fathin Ahmad Zidan & Syifa 'Alin Anufy --> */}
+      {/* Header Sambutan */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-garis">
         <div>
           <h1 className="text-2xl font-bold text-marun">Halo, {pengguna?.nama_lengkap || 'Penghuni'}!</h1>
@@ -17,17 +19,26 @@ export const DasborPenghuni = () => {
             Selamat datang di portal penghuni Kos Putri Alhamra.
           </p>
         </div>
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-kuning-mas/20 border border-kuning-mas/40 text-xs font-semibold text-cokelat-tua">
-          <Home className="w-4 h-4 text-terakota" />
-          <span>Kamar: {pengguna?.nomor_kamar || 'Kamar A-05'}</span>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-kuning-mas/20 border border-kuning-mas/40 text-xs font-semibold text-cokelat-tua">
+            <Home className="w-4 h-4 text-terakota" />
+            <span>Kamar: {pengguna?.nomor_kamar || 'Kamar A-05'}</span>
+          </div>
+          <Link
+            to="/penghuni/lapor-kerusakan"
+            className="tombol-marun py-2 px-4 text-xs gap-1.5 shadow-sm"
+          >
+            <PlusCircle className="w-3.5 h-3.5 text-kuning-mas" />
+            <span>Lapor Kerusakan</span>
+          </Link>
         </div>
       </div>
 
-      {/* Kartu Status Utama (Soft Bento) */}
+      {/* Kartu Status Ringkasan (Soft Bento) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="kartu-bento p-5 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-terakota">Tagihan Bulan Ini</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-terakota">Tagihan Bulan Berjalan</span>
             <CreditCard className="w-5 h-5 text-marun" />
           </div>
           <div>
@@ -38,24 +49,24 @@ export const DasborPenghuni = () => {
             to="/penghuni/tagihan"
             className="inline-flex text-xs font-semibold text-terakota hover:text-marun underline"
           >
-            Lihat & Konfirmasi Pembayaran &rarr;
+            Konfirmasi Pembayaran Sewa &rarr;
           </Link>
         </div>
 
         <div className="kartu-bento p-5 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-terakota">Status Tiket Kerusakan</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-terakota">Layanan Cepat Fasilitas</span>
             <Wrench className="w-5 h-5 text-terakota" />
           </div>
           <div>
-            <p className="text-2xl font-bold text-emerald-700">0 Laporan Aktif</p>
-            <p className="text-xs text-cokelat-tua/70 mt-1">Fasilitas kamar dalam kondisi prima</p>
+            <p className="text-sm font-bold text-cokelat-tua">Butuh bantuan perbaikan?</p>
+            <p className="text-xs text-cokelat-tua/70 mt-1">Lapor online dengan klasifikasi prioritas AI otomatis.</p>
           </div>
           <Link
             to="/penghuni/lapor-kerusakan"
             className="inline-flex text-xs font-semibold text-terakota hover:text-marun underline"
           >
-            Laporkan Kendala Fasilitas &rarr;
+            Buat Tiket Laporan Baru &rarr;
           </Link>
         </div>
 
@@ -74,14 +85,13 @@ export const DasborPenghuni = () => {
         </div>
       </div>
 
-      {/* Area Shell Placeholder */}
-      <div className="kartu-bento p-6 text-center space-y-3 bg-latar/50">
-        <AlertCircle className="w-8 h-8 text-terakota mx-auto" />
-        <h3 className="font-bold text-base text-marun">Fitur Interaktif Dalam Pengembangan Tahap Selanjutnya</h3>
-        <p className="text-xs text-cokelat-tua/75 max-w-lg mx-auto">
-          Riwayat sewa, pencatatan transaksi kuitansi digital, dan bot WhatsApp AI akan diintegrasikan pada modul masing-masing pengembang.
-        </p>
-      </div>
+      {/* Modul Pelacakan Progres Laporan Tiket (Real-time Status Tracker) */}
+      <section aria-labelledby="judul-status-tiket" className="pt-2">
+        <DaftarTiketKerusakan
+          peranPengguna="tenant"
+          judulBagian="Pemantauan Progres Perbaikan Fasilitas"
+        />
+      </section>
     </div>
   );
 };

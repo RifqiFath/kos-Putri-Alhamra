@@ -45,6 +45,7 @@ export const DashboardLayout = () => {
       return [
         { label: 'Dasbor Tugas', path: '/penjaga', ikon: LayoutDashboard },
         { label: 'Perbaikan Fasilitas', path: '/penjaga/perbaikan', ikon: Wrench },
+        { label: 'Catat Kerusakan Baru', path: '/penjaga/lapor-kerusakan', ikon: FileText },
       ];
     }
     // Default: tenant
